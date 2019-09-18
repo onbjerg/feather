@@ -1,0 +1,32 @@
+{
+  "name": "feather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feathercache/feather.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/feathercache/feather/issues"
+  },
+  "homepage": "https://github.com/feathercache/feather#readme",
+  "dependencies": {
+    "@aragon/wrapper": "^5.0.0-rc.17",
+    "got": "^9.6.0",
+    "micro": "^9.3.4",
+    "micro-cors": "^0.1.1",
+    "redis": "^2.8.0",
+    "web3": "^1.2.1"
+  }
+}
