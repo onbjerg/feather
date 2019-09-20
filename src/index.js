@@ -26,8 +26,13 @@ async function addAppWorker (orgAddress, app) {
     .getWorker(orgAddress)
     .worker.runApp(app.proxyAddress)
 
+  // If the app has been updated, then we clear the current cache,
+  // stop the app worker and start a new one from scratch.
   if (app.updated && APP_WORKERS.hasWorker(app.proxyAddress)) {
-    // TODO: Remove worker and reset cache
+    const { connection } = APP_WORKERS.getWorker(app.proxyAddress)
+    connection.shutdownAndClearCache()
+
+    APP_WORKERS.removeWorker(app.proxyAddress)
   }
 
   if (!APP_WORKERS.hasWorker(app.proxyAddress)) {
