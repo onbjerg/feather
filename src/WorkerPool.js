@@ -17,6 +17,10 @@ class WorkerPool {
   getWorker (id) {
     return this.workers.get(id)
   }
+
+  removeWorker (id) {
+    return this.workers.delete(id)
+  }
 }
 
 module.exports = { WorkerPool }
