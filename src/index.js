@@ -10,7 +10,7 @@ const {
 } = require('@aragon/wrapper')
 const got = require('got')
 const { WorkerPool } = require('./WorkerPool')
-const { transformMessages, withWindowMock } = require('./message-port-mocks')
+const { transformMessages, withWindowMock } = require('./browser-mocks')
 
 const ORGANISATION_WORKERS = new WorkerPool()
 const APP_WORKERS = new WorkerPool()
