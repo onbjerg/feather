@@ -1,5 +1,7 @@
 # Feather
 
+> Latest version: *1.1.0*
+
 Feather is a server-side caching solution for Aragon.
 
 ## Running
