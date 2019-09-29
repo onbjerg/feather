@@ -7,7 +7,7 @@ Feather is a server-side caching solution for Aragon.
 The API is exposed at port 3000.
 
 ```
-docker run docker.pkg.github.com/onbjerg/feather/feather
+docker run docker.pkg.github.com/onbjerg/feather/server
 ```
 
 ### Configuration
