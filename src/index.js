@@ -41,6 +41,14 @@ async function addAppWorker (orgAddress, app) {
       eval: true
     })
 
+    worker.on('exit', (exitCode) => {
+      console.log(`Worker for ${app.proxyAddress} exited with code ${exitCode}. Restarting.`)
+
+      // The app worker crashed, so we'll just remove it and create a new one.
+      APP_WORKERS.removeWorker(app.proxyAddress)
+      addAppWorker(orgAddress, app)
+    })
+
     const provider = new providers.MessagePortMessage(
       transformMessages(worker)
     )
@@ -91,7 +99,16 @@ async function serveState (req, res) {
   if (path.startsWith('0x')) {
     let hit = ORGANISATION_WORKERS.hasWorker(path)
     if (!hit) {
-      await addOrganisationWorker(path)
+      try {
+        await addOrganisationWorker(path)
+      } catch (err) {
+        console.log(`Could not start worker for organisation ${path}. Error:\n${err.toString()}`)
+        return {
+          hit,
+          error: true,
+          cache: {}
+        }
+      }
     }
 
     const { worker } = await ORGANISATION_WORKERS.getWorker(path)
